@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    margin: auto;
+    width: 300px;
+    text-align: center;
+}
+
+main {
+    margin: auto;
+    width: 300px;
+    padding: 10px;
+    padding-right: 18px;
+    border: rgba(0, 0, 0, 0.479) solid 3px;
+    border-radius: 5px;
+}
+
+p {
+    padding: 8px;
+    text-align: center;
+}
+#erroSenha{
+    font-weight: bolder
+}
+input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"], input[type="reset"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+input[type="reset"] {
+    background-color: #dc3545;
+}
+
+input[type="submit"]:hover, input[type="reset"]:hover {
+    opacity: 0.8;
+}
