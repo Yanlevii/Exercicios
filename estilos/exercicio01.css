@@ -1,63 +1,100 @@
 @charset "UTF-8";
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
+/* Ajustes gerais para garantir que a página fique limpa e agradável */
 
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Ajuste de fontes e espaçamento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Cor de fundo suave */
+    padding-top: 50px; /* Espaçamento superior para a página não colar no topo */
+}
+
+/* Estilo do cabeçalho */
 header {
-    margin: auto;
-    width: 300px;
-    text-align: center;
+    margin-bottom: 30px;
 }
 
-main {
-    margin: auto;
-    width: 300px;
-    padding: 10px;
-    padding-right: 18px;
-    border: rgba(0, 0, 0, 0.479) solid 3px;
+/* Estilização dos campos do formulário */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"] {
+    padding: 12px 15px;
+    margin-bottom: 15px;
     border-radius: 5px;
-}
-
-p {
-    padding: 8px;
-    text-align: center;
-}
-#erroSenha{
-    font-weight: bolder
-}
-input {
+    border: 1px solid #ced4da;
     width: 100%;
-    padding: 5px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    font-size: 1rem;
 }
 
-input[type="submit"], input[type="reset"] {
+input[type="submit"],
+input[type="reset"] {
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 48%;
+    cursor: pointer;
+}
+
+input[type="submit"] {
     background-color: #007bff;
     color: white;
     border: none;
-    cursor: pointer;
-    padding: 10px;
-    margin-top: 10px;
 }
 
 input[type="reset"] {
     background-color: #dc3545;
+    color: white;
+    border: none;
 }
 
-input[type="submit"]:hover, input[type="reset"]:hover {
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     opacity: 0.8;
 }
+
+/* Estilo para os erros de senha */
+#erroSenha {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 15px;
+}
+
+/* Estilo para o container principal */
+.container {
+    max-width: 500px; /* Largura limitada para o formulário */
+    margin: auto; /* Centraliza o formulário */
+    background-color: white; /* Cor de fundo do formulário */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização para o formulário */
+form {
+    width: 100%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 576px) {
+    .container {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
