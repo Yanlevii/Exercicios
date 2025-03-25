@@ -18,6 +18,25 @@ body {
 /* Estilo do cabeçalho */
 header {
     margin-bottom: 30px;
+    user-select: none;
+}
+/* Estilo para o container principal */
+.container {
+    width: 40vw ; /* Largura limitada para o formulário */
+    margin: auto; /* Centraliza o formulário */
+    background-color: white; /* Cor de fundo do formulário */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização para o formulário */
+form {
+    width: 100%;
+}
+
+label{
+    user-select: none;
 }
 
 /* Estilização dos campos do formulário */
@@ -26,7 +45,7 @@ input[type="email"],
 input[type="password"],
 input[type="number"],
 input[type="tel"] {
-    padding: 12px 15px;
+    padding: 5px 15px;
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #ced4da;
@@ -68,33 +87,3 @@ input[type="reset"]:hover {
     margin-top: -10px;
     margin-bottom: 15px;
 }
-
-/* Estilo para o container principal */
-.container {
-    max-width: 500px; /* Largura limitada para o formulário */
-    margin: auto; /* Centraliza o formulário */
-    background-color: white; /* Cor de fundo do formulário */
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Estilização para o formulário */
-form {
-    width: 100%;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 576px) {
-    .container {
-        padding: 20px;
-        max-width: 100%;
-    }
-
-    input[type="submit"],
-    input[type="reset"] {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-}
-
