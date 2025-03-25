@@ -22,7 +22,8 @@ header {
 }
 /* Estilo para o container principal */
 .container {
-    width: 40vw ; /* Largura limitada para o formulário */
+    max-width: 500px ; /* Largura limitada para o formulário */
+    min-width: 350px;
     margin: auto; /* Centraliza o formulário */
     background-color: white; /* Cor de fundo do formulário */
     padding: 30px;
