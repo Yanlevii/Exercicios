@@ -1,3 +1,8 @@
+function mascaraNome(event) {
+    let input = event.target;
+    let valor = input.value.replace(/[0-9]/g, ''); // Remove os números
+    input.value = valor;
+}
 // Máscara de telefone dinâmica
 function mascaraTelefone(event) {
     let input = event.target;
