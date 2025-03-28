@@ -1,70 +1,62 @@
-function mascaraNome(event) {
-    let input = event.target;
-    let valor = input.value.replace(/[0-9]/g, ''); // Remove os números
-    input.value = valor;
-}
-// Máscara de telefone dinâmica
-function mascaraTelefone(event) {
-    let input = event.target;
-    let valor = input.value.replace(/\D/g, ''); // Remove tudo que não for número
+// Função para gerar o arquivo JSON e permitir o download
+function enviarCadastro(event) {
+    event.preventDefault(); // Previne o envio padrão do formulário
+    
+    const form = document.getElementById('formCadastro');
+    const formData = new FormData(form);
 
-    if (valor.length > 11) valor = valor.slice(0, 11); // Limita a 11 dígitos
-
-    let formatado = "";
-
-    if (valor.length > 0) {
-        formatado = `(${valor.slice(0, 2)}`;
-    }
-    if (valor.length > 2) {
-        formatado += `) ${valor.slice(2, 7)}`;
-    }
-    if (valor.length > 7) {
-        formatado += `-${valor.slice(7, 11)}`;
-    }
-
-    input.value = formatado;
-}
-
-// Validação de senha
-function validarSenha() {
-    var senha = document.getElementById("isenha").value;
-    var confirmarSenha = document.getElementById("iconfirmar").value;
-    var erro = document.getElementById("erroSenha");
-
+    // Coletando os dados do formulário
+    const nome = document.getElementById("inome").value;
+    const cpf = document.getElementById("icpf").value;
+    const email = document.getElementById("iemail").value;
+    const telefone = document.getElementById("inum").value;
+    const senha = document.getElementById("isenha").value;
+    const confirmarSenha = document.getElementById("iconfirmar").value;
+    
+    // Validação da senha
+    const erroSenha = document.getElementById("erroSenha");
     if (senha.length < 6) {
-        erro.textContent = "A senha deve ter no mínimo 6 caracteres!";
-        return false;
+        erroSenha.textContent = "A senha deve ter no mínimo 6 caracteres!";
+        return;
     }
-
     if (senha !== confirmarSenha) {
-        erro.textContent = "As senhas não coincidem!";
-        return false;
-    } else {
-        erro.textContent = "";
-        return true;
+        erroSenha.textContent = "As senhas não coincidem!";
+        return;
     }
-}
-// Máscara para CPF (XXX.XXX.XXX-XX)
-function mascaraCPF(event) {
-    let input = event.target;
-    let valor = input.value.replace(/\D/g, ''); // Remove tudo que não for número
+    erroSenha.textContent = ""; // Limpa a mensagem de erro
 
-    if (valor.length > 11) valor = valor.slice(0, 11); // Limita a 11 números
+    // Criando o objeto com os dados
+    const dados = {
+        nome: nome,
+        cpf: cpf,
+        email: email,
+        telefone: telefone,
+        senha: senha,
+        confirmarSenha: confirmarSenha
+    };
 
-    let formatado = "";
+    // Convertendo o objeto em uma string JSON
+    const jsonDados = JSON.stringify(dados);
 
-    if (valor.length > 0) {
-        formatado = `${valor.slice(0, 3)}`;
-    }
-    if (valor.length > 3) {
-        formatado += `.${valor.slice(3, 6)}`;
-    }
-    if (valor.length > 6) {
-        formatado += `.${valor.slice(6, 9)}`;
-    }
-    if (valor.length > 9) {
-        formatado += `-${valor.slice(9, 11)}`;
-    }
+    // Criando o Blob com o conteúdo JSON
+    const blob = new Blob([jsonDados], { type: 'application/json' });
 
-    input.value = formatado;
+    // Gerando o link para o download
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.download = 'dados_cadastro.json'; // Nome do arquivo JSON
+    link.style.display = 'none'; // Link invisível
+    document.body.appendChild(link);
+
+    // Clicando automaticamente para baixar o arquivo
+    link.click();
+
+    // Removendo o link após o clique
+    document.body.removeChild(link);
+
+    // Exibindo mensagem de sucesso
+    const mensagemResposta = document.getElementById('mensagemResposta');
+    mensagemResposta.innerHTML = `<p>Cadastro concluído e arquivo JSON gerado!</p>`;
+    mensagemResposta.style.color = 'green';
 }
